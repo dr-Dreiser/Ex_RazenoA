@@ -9,6 +9,64 @@
       Title="ShopPage">
 
     <Grid>
-        <TextBlock>Магазин</TextBlock>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Name="Korzina" Grid.Row="0" Grid.Column="3" Grid.RowSpan="3">
+            <GroupBox Name="Korzina_GB" Header="Ваш заказ" >
+                <StackPanel>
+                    <TextBlock Name="TB_CountBook"></TextBlock>
+                    <StackPanel>
+                        <TextBlock Name="TB_FalsePriceSumm"></TextBlock>
+                        <TextBlock Name="TB_PriceSum"></TextBlock>
+                    </StackPanel>
+                    <TextBlock Name="TB_Discount"></TextBlock>
+                    <DataGrid Name="DG_BookZ" CanUserAddRows="False" AutoGenerateColumns="False"> 
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Название книги" Binding="{Binding Название}"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Name="Otpravit" Content="Отправить заказ" Click="Otpravit_Click"></Button>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+        <ScrollViewer Name="SV_DG_Books" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="3">
+            <StackPanel>
+                <DataGrid Name="DG_Books" AutoGenerateColumns="False" CanUserAddRows="False" ColumnWidth="1*">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Name="PositionBook" Initialized="PositionBook_Initialized" Orientation="Horizontal">
+                                        <StackPanel>
+                                            <MediaElement Initialized="MediaElement_Initialized" Width="200" Height="200" ></MediaElement>
+                                        </StackPanel>
+                                        <StackPanel>
+                                            <TextBlock Name="NameBook" Initialized="NameBook_Initialized"></TextBlock>
+                                            <TextBlock Name="AutorBook" Initialized="AutorBook_Initialized"></TextBlock>
+                                            <TextBlock Name="PriceBook" Initialized="PriceBook_Initialized"></TextBlock>
+                                            <TextBlock Name="CountInShop" Initialized="CountInShop_Initialized"></TextBlock>
+                                            <TextBlock Name="CountInSklad" Initialized="CountInSklad_Initialized"></TextBlock>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Button Name="AddInKorzina" Content="Добавить" Initialized="AddInKorzina_Initialized" Click="AddInKorzina_Click"></Button>
+                                                <Button Name="DeleteInKorzina" Content="Удалить" IsEnabled="False" Initialized="DeleteInKorzina_Initialized" Click="DeleteInKorzina_Click"></Button>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

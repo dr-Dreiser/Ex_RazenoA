@@ -23,8 +23,9 @@ namespace Ex_RazenoA
         public MainWindow()
         {
             InitializeComponent();
+            DataClass.DataShop = new ShopBook();
             ClassFrame.MF = MainFrame;
-            MainFrame.Navigate(new ShopPage());
+            MainFrame.Navigate(new AutorizPage());
         }
     }
 }

@@ -8,5 +8,6 @@ namespace Ex_RazenoA
 {
     class DataClass
     {
+        public static ShopBook DataShop;
     }
 }
